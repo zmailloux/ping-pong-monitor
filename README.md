@@ -12,7 +12,15 @@ We will set up a PIR motion sensor (or webcam) attached to a raspberry pi that w
 
 
 
-## Version 2: Webcam Motion Sensor
+## Version 2: Webcam Motion Detection
 This version provides the benefit of **eventually** having a video feed into a grafana dashboard. This version however may face some kick back from HR.
 <!-- ![Version 2](https://github.com/zmailloux/ping-pong-monitor/blob/master/Ping%20Pong%20Monitor%20-%20V2.png) -->
 ![Version 3](https://github.com/zmailloux/ping-pong-monitor/blob/master/Ping%20Pong%20Monitor%20-%20V3.png)
+
+## Sources:
+PIR Motion Detection:
+* https://tutorials-raspberrypi.com/connect-and-control-raspberry-pi-motion-detector-pir/
+* https://thepihut.com/blogs/raspberry-pi-tutorials/raspberry-pi-gpio-sensing-motion-detection
+Webcam Motion Detection:
+* https://www.geeksforgeeks.org/webcam-motion-detector-python/
+* https://www.pyimagesearch.com/2015/05/25/basic-motion-detection-and-tracking-with-python-and-opencv/
