@@ -25,6 +25,7 @@ def main(host='influxdb.monitoring', port=8086):
     client = InfluxDBClient(host, port, "root", "root", dbname)
     previous_signature = 0
     while True:
+        new_signature = spoof_pir_sensor(previous_signature)
         json_body = [
             {
                 "measurement": "pir_sensor_reading",
@@ -34,7 +35,7 @@ def main(host='influxdb.monitoring', port=8086):
                 },
                 "time": str(datetime.now().isoformat(timespec='seconds')),
                 "fields": {
-                    "signature": spoof_pir_sensor(previous_signature), # PIR Sensor reading
+                    "signature": new_signature, # PIR Sensor reading
                     "string_value": "temp",
                     "bool_value": bool(random.getrandbits(1))
                 }
@@ -43,6 +44,7 @@ def main(host='influxdb.monitoring', port=8086):
         print(json_body)
         print("Write points: {0}".format(json_body))
         client.write_points(json_body)
+        previous_signature = new_signature
         time.sleep(5)
 
 
