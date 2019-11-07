@@ -1,0 +1,19 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influx-app
+spec:
+  selector:
+    matchLabels:
+      app: influx-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: influx-app
+    spec:
+      containers:
+      - name: influx-app
+        image: gcr.io/verdant-future-257013/influx-app:latest
+        imagePullPolicy: Always
