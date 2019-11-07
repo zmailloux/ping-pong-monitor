@@ -5,10 +5,25 @@ import time
 from datetime import datetime
 import random
 
+
+def spoof_pir_sensor(previous_signature):
+    stop_start_chance = random.randint(0, 10)
+    # 10% odds someone started or left.
+    if stop_start_chance > 9:
+        previous_signature = abs(previous_signature - 100)
+
+
+    if (previous_signature < 50):
+        return random.randint(0, 50)
+    else:
+        return random.randint(50, 100)
+    
+
+
 def main(host='influxdb.monitoring', port=8086):
     dbname = 'player_status_test'
     client = InfluxDBClient(host, port, "root", "root", dbname)
-
+    previous_signature = 0
     while True:
         json_body = [
             {
@@ -19,7 +34,7 @@ def main(host='influxdb.monitoring', port=8086):
                 },
                 "time": str(datetime.now().isoformat(timespec='seconds')),
                 "fields": {
-                    "signature": random.randint(0,100), # PIR Sensor reading
+                    "signature": spoof_pir_sensor(previous_signature), # PIR Sensor reading
                     "string_value": "temp",
                     "bool_value": bool(random.getrandbits(1))
                 }

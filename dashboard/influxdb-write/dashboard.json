@@ -132,6 +132,41 @@
         "valueName": "avg"
       },
       {
+        "alert": {
+          "alertRuleTags": {},
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  50
+                ],
+                "type": "gt"
+              },
+              "operator": {
+                "type": "and"
+              },
+              "query": {
+                "params": [
+                  "A",
+                  "1m",
+                  "now"
+                ]
+              },
+              "reducer": {
+                "params": [],
+                "type": "avg"
+              },
+              "type": "query"
+            }
+          ],
+          "executionErrorState": "alerting",
+          "for": "1m",
+          "frequency": "1m",
+          "handler": 1,
+          "name": "PIR Sensor Signature alert",
+          "noDataState": "no_data",
+          "notifications": []
+        },
         "aliasColors": {},
         "bars": false,
         "dashLength": 10,
@@ -171,6 +206,7 @@
         "steppedLine": false,
         "targets": [
           {
+            "alias": "PIR Sensor Value",
             "groupBy": [
               {
                 "params": [
@@ -213,7 +249,16 @@
             ]
           }
         ],
-        "thresholds": [],
+        "thresholds": [
+          {
+            "colorMode": "critical",
+            "fill": true,
+            "line": true,
+            "op": "gt",
+            "value": 50,
+            "yaxis": "left"
+          }
+        ],
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
@@ -283,5 +328,5 @@
     "timezone": "",
     "title": "Testing",
     "uid": "Owx4VqAWz",
-    "version": 9
+    "version": 11
   }
