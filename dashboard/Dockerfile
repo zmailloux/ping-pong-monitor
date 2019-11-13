@@ -3,5 +3,6 @@ LABEL maintainer="zachmailloux@gmail.com"
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
+EXPOSE 5000
 ENTRYPOINT ["python"]
-CMD ["influx.py"]
+CMD ["app/app.py"]

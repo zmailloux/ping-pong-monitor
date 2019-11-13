@@ -1,2 +1,2 @@
 # Ping Pong Dashboard
-TODO: The dashboard will be a Python Flask web application.
+TODO: Go into the functionality of the dashboard, endpoints, etc.

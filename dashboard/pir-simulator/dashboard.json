@@ -132,41 +132,6 @@
         "valueName": "avg"
       },
       {
-        "alert": {
-          "alertRuleTags": {},
-          "conditions": [
-            {
-              "evaluator": {
-                "params": [
-                  50
-                ],
-                "type": "gt"
-              },
-              "operator": {
-                "type": "and"
-              },
-              "query": {
-                "params": [
-                  "A",
-                  "1m",
-                  "now"
-                ]
-              },
-              "reducer": {
-                "params": [],
-                "type": "avg"
-              },
-              "type": "query"
-            }
-          ],
-          "executionErrorState": "alerting",
-          "for": "1m",
-          "frequency": "1m",
-          "handler": 1,
-          "name": "PIR Sensor Signature alert",
-          "noDataState": "no_data",
-          "notifications": []
-        },
         "aliasColors": {},
         "bars": false,
         "dashLength": 10,
@@ -184,6 +149,7 @@
         "legend": {
           "avg": false,
           "current": false,
+          "hideEmpty": false,
           "max": false,
           "min": false,
           "show": true,
@@ -251,7 +217,7 @@
         ],
         "thresholds": [
           {
-            "colorMode": "critical",
+            "colorMode": "warning",
             "fill": true,
             "line": true,
             "op": "gt",
@@ -262,7 +228,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "PIR Sensor Signature",
+        "title": "SIMULATED PIR Sensor Signature",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -278,11 +244,12 @@
         },
         "yaxes": [
           {
+            "decimals": null,
             "format": "short",
-            "label": null,
+            "label": "Sensor Value Scale",
             "logBase": 1,
-            "max": null,
-            "min": null,
+            "max": "100",
+            "min": "0",
             "show": true
           },
           {
@@ -295,8 +262,8 @@
           }
         ],
         "yaxis": {
-          "align": false,
-          "alignLevel": null
+          "align": true,
+          "alignLevel": 0
         }
       }
     ],
@@ -308,7 +275,7 @@
       "list": []
     },
     "time": {
-      "from": "now-5m",
+      "from": "now-15m",
       "to": "now"
     },
     "timepicker": {
@@ -328,5 +295,5 @@
     "timezone": "",
     "title": "Testing",
     "uid": "Owx4VqAWz",
-    "version": 11
+    "version": 13
   }
