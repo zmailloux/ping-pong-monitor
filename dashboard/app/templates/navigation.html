@@ -1,0 +1,41 @@
+{# https://stackoverflow.com/questions/9679038/is-it-possible-to-perform-includes-with-flask #}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+{# https://segment.com/docs/sources/website/analytics.js/ #}
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    setInterval(function () {
+        refreshPage($('#changing-environments').is(':visible'))
+    }, 30000);
+</script>
+
+{% block head %}
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+{% endblock %}
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">Echo Ping Pong Dashboard</a>
+            <span class="w3-container w3-lobster">Beta {{ build_info.build }}</span>
+        </div>
+        <ul class="nav navbar-nav" id="navigation">
+            {% for item in nav.top %}
+                <li role="navigation" class="{{ 'active' if item.is_active else '' }}"><a href="{{ item.url }}">
+                    {{ item.label }}</a></li>
+            {% endfor %}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/zmailloux/ping-pong-monitor" target="_blank">Github</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>

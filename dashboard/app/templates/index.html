@@ -1,12 +1,17 @@
 <link rel="stylesheet" href="/static/loginStyle.css" type="text/css">
+{% include "navigation.html" %}
 {% block body %}
-<div>
-	<h1>Echo Ping Pong Dashboard</h1>
-</div>
+<!-- {% include "navigation.html" %} -->
+<!-- <div>
+	<h1>Echo Ping Pong Dashboard {{ build_info.build }}</h1>
+</div> -->
     <div>
-        <iframe src="http://35.223.229.107/d-solo/Owx4VqAWz/testing?orgId=1&refresh=5s&panelId=9" width="450" height="200" frameborder="0"></iframe>
-        <iframe src="http://35.223.229.107/d-solo/Owx4VqAWz/testing?orgId=1&refresh=5s&panelId=8" width="450" height="200" frameborder="0"></iframe>
-        <iframe src="http://35.223.229.107/d-solo/Owx4VqAWz/testing?orgId=1&refresh=5s&panelId=15" width="450" height="200" frameborder="0"></iframe>
+        <iframe src="http://35.223.229.107/d-solo/Owx4VqAWz/testing?orgId=1&refresh=5s&panelId=9" width="450" height="300" frameborder="0"></iframe>
+        <iframe src="http://35.223.229.107/d-solo/Owx4VqAWz/testing?orgId=1&refresh=5s&panelId=8" width="450" height="300" frameborder="0"></iframe>
+        <iframe src="http://35.223.229.107/d-solo/Owx4VqAWz/testing?orgId=1&refresh=5s&panelId=15" width="300" height="300" frameborder="0"></iframe>
+    </div>
+    <div>
+        Questions? Reach out on the GitHub page at https://github.com/zmailloux/ping-pong-monitor or email zachary.mailloux@echo.com
     </div>
 
 {% endblock %}

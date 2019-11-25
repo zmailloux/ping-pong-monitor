@@ -35,3 +35,6 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
+        env:
+          - name: is_maintenance_mode
+            value: "True"

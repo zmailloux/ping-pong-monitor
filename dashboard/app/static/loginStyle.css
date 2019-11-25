@@ -8,7 +8,9 @@
 body {
   font-family: Arial;
   background-color: #484c52;
-  padding: 50px;
+/* padding: 50px; */
+padding-right: 30px;
+padding-left: 30px;
 }
 .login {
   margin: 20px auto;
