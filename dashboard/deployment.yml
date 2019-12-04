@@ -2,13 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: dashboard-app-service
-  annotations: {prometheus.io/scrape: "true", prometheus.io/port: "5000"}
 spec:
   selector:
     app: dashboard-app
   ports:
   - protocol: "TCP"
-    port: 5000
+    port: 80
     targetPort: 5000
   type: LoadBalancer
 
@@ -17,7 +16,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dashboard-app
-  annotations: {prometheus.io/scrape: "true", prometheus.io/port: "5000"}
 spec:
   selector:
     matchLabels:
@@ -25,7 +23,6 @@ spec:
   replicas: 1
   template:
     metadata:
-      annotations: {prometheus.io/scrape: "true", prometheus.io/port: "5000"}
       labels:
         app: dashboard-app
     spec:
@@ -37,4 +34,6 @@ spec:
         - containerPort: 5000
         env:
           - name: is_maintenance_mode
-            value: "True"
+            value: "False"
+          - name: slack_webhook
+            value: "temp"

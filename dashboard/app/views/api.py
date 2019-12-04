@@ -6,6 +6,7 @@ import flask_login
 from flask import (Blueprint, flash, jsonify, redirect, render_template, request, session, url_for)
 from influxdb import InfluxDBClient
 from utils.activity import (add_login_activity, add_user_activity, get_user_activity, load_json_file)
+from utils.slack import (notify_slack)
 
 api_view = Blueprint('api_view', __name__)
 api_view.app_template_filter()
@@ -62,6 +63,15 @@ def get_player_present():
     point['player_present'] = player_present
     return str(point)
 
+@api_view.route("/api/table_free")
+def table_free():
+    notify_slack(":tada: The Ping Pong table is now free!")
+    return ""
+
+@api_view.route("/api/table_taken")
+def table_taken():
+    notify_slack(":stop: The Ping Pong table has just been taken!")
+    return ""
 
 # @api_view.route('/api/status', methods=['GET'])
 # def get_status():

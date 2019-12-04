@@ -39,13 +39,6 @@ def user_loader(username):
     return user
 
 
-
-#https://github.com/maxcountryman/flask-login
-@login_view.route('/test', methods=['GET', 'POST'])
-def test():
-    return "test"
-
-
 #https://github.com/maxcountryman/flask-login
 @login_view.route('/', methods=['GET', 'POST'])
 @login_view.route('/login', methods=['GET', 'POST'])

@@ -8,6 +8,7 @@ import socket
 import time
 from datetime import datetime
 from random import choice
+import requests
 from string import ascii_lowercase
 
 import flask_login
@@ -43,7 +44,7 @@ build_info = load_json_file("build_info.json")
 # static information as metric
 # This can set as an environment variable in the deployment that can pull either the container image hash or version
 # https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/
-metrics.info('app_info', 'Application info', version='0.0.1')
+metrics.info('app_info', 'Application info', version='0.1.0')
 
 app.config['IMAGES_FOLDER'] = os.path.join('static', 'images')
 app.config['STATIC_FOLDER'] = os.path.join('..', 'static_resources')
