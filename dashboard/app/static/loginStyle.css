@@ -78,3 +78,17 @@ input:focus {
   display: block;
 	margin-top: 12px;
 }
+
+.changes {
+  margin: 20px auto;
+  width: 500px;
+}
+.changes-screen {
+  background-color: #FFF;
+  padding: 20px;
+  border-radius: 5px
+}
+
+.changes-form {
+  text-align: center;
+}

@@ -5,6 +5,6 @@ docker push gcr.io/verdant-future-257013/dashboard-app:latest
 
 kubectl apply -f deployment.yml
 
-kubectl scale deployment dashboard-app --replicas=0
+kubectl scale deployment dashboard-app --replicas=2
 sleep 1
 kubectl scale deployment dashboard-app --replicas=1

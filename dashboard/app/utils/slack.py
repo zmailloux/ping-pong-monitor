@@ -6,14 +6,13 @@ import os
 # Set the webhook_url to the one provided by Slack when you create the webhook at https://my.slack.com/services/new/incoming-webhook/
 webhook_url = os.getenv('slack_webhook')
 
-
 def notify_slack(msg):
     current_time = time.asctime(time.localtime(time.time()))
     slack_data = {
         'channel': '#test-alerts',
         'icon_emoji': 'ping-pong',
         'username': 'Ping Pong Dashboard v0.1.2',
-        'text': msg
+        'text': f"{msg} (<http://34.69.249.145/index|Link>)"
     }
     send_slack_message(slack_data)
 

@@ -28,8 +28,11 @@ while True:
         previously_in_motion = True
         motion_event += 1
         notify_inactivity_counter = 0
-        r = requests.post(f"{server_address}/api/pir_reading", json={"value": 100})
-        print(f"Motion event #{motion_event} sent, status: {r.status_code}")
+        try:
+            r = requests.post(f"{server_address}/api/pir_reading", json={"value": 100})
+            print(f"Motion event #{motion_event} sent, status: {r.status_code}")
+        except requests.exceptions.RequestExeception as e:
+            print(e)
         time.sleep(1)
     else:
         notify_inactivity_counter += 1

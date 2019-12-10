@@ -3,3 +3,4 @@ Flask-Login==0.4.1
 Flask-Navigation==0.2.0
 prometheus_flask_exporter
 influxdb
+apscheduler
