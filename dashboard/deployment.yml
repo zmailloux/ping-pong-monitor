@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dashboard-app-service
+  name: ping-pong-dashboard-service
 spec:
   selector:
-    app: dashboard-app
+    app: ping-pong-dashboard
   ports:
   - protocol: "TCP"
     port: 80
@@ -15,20 +15,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dashboard-app
+  name: ping-pong-dashboard
 spec:
   selector:
     matchLabels:
-      app: dashboard-app
+      app: ping-pong-dashboard
   replicas: 1
   template:
     metadata:
       labels:
-        app: dashboard-app
+        app: ping-pong-dashboard
     spec:
       containers:
-      - name: dashboard-app
-        image: gcr.io/verdant-future-257013/dashboard-app:latest
+      - name: ping-pong-dashboard
+        image: gcr.io/verdant-future-257013/ping-pong-dashboard:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
@@ -36,4 +36,4 @@ spec:
           - name: is_maintenance_mode
             value: "False"
           - name: slack_webhook
-            value: "temp"
+            value: "https://hooks.slack.com/services/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"

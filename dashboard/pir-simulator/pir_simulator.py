@@ -20,7 +20,7 @@ def main():
     while True:
         new_signature = spoof_pir_sensor(previous_signature)
         data = {"value": new_signature}
-        r = requests.post(url = "http://34.69.249.145:5000/api/pri_reading", json = data) 
+        r = requests.post(url = "http://34.69.249.145:5000/api/pir_reading", json = data) 
         previous_signature = new_signature
         time.sleep(5)
 

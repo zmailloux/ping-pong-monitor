@@ -62,6 +62,10 @@ def check_for_maintenance():
         # Or alternatively, dont redirect 
         # return 'Sorry, off for maintenance!', 503
 
+@app.route('/redir')
+def redir():
+    return redirect("http://www.google.com")
+
 
 @app.route("/health")
 def health():

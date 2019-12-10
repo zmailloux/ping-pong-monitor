@@ -53,20 +53,6 @@ scheduler.start()
 
 api_view = Blueprint('api_view', __name__)
 api_view.app_template_filter()
-# dbname = 'player_status_test'
-
-# # If not Windows (If we're running in kubernetes)
-# if "nt" not in os.name:
-#     # dbname = 'player_status_test'
-#     client = InfluxDBClient("influxdb.monitoring", "8086", "root", "root", dbname)
-
-
-@api_view.route("/api/pir_reading", methods=['POST'])
-def pir_reading():
-    print("pir")
-    content = request.json
-    write_influx(content["value"])
-    return "temp"
 
 
 @api_view.route("/api/test", methods=['POST'])
@@ -75,32 +61,39 @@ def post_test():
     return jsonify(content)
 
 
-def write_influx(signature):
-    json_body = [
-        {
-            "measurement": "pir_sensor_reading",
-            "tags": {
-                "host": "server01",
-                "day": datetime.today().weekday()
-            },
-            "time": str(datetime.now().isoformat(timespec='seconds')),
-            "fields": {
-                "signature": signature # PIR Sensor reading
-                # "string_value": "temp",
-                # "bool_value": bool(random.getrandbits(1)) # remove this garbage
-            }
-        }
-    ]
-    print(json_body)
-    print("Write points: {0}".format(json_body))
-    client.write_points(json_body)
-
-
 @api_view.route('/api/metadata', methods=['GET'])
 def get_metadata():
     user_data = get_user_activity()
     output = {"user_data": user_data}
     return jsonify(output)
+
+# Moved to seperate application.
+# @api_view.route("/api/pir_reading", methods=['POST'])
+# def pir_reading():
+#     print("pir")
+#     content = request.json
+#     write_influx(content["value"])
+#     return "temp"
+
+# def write_influx(signature):
+#     json_body = [
+#         {
+#             "measurement": "pir_sensor_reading",
+#             "tags": {
+#                 "host": "server01",
+#                 "day": datetime.today().weekday()
+#             },
+#             "time": str(datetime.now().isoformat(timespec='seconds')),
+#             "fields": {
+#                 "signature": signature # PIR Sensor reading
+#                 # "string_value": "temp",
+#                 # "bool_value": bool(random.getrandbits(1)) # remove this garbage
+#             }
+#         }
+#     ]
+#     print(json_body)
+#     print("Write points: {0}".format(json_body))
+#     client.write_points(json_body)
 
 # @api_view.route('/api/player_present', methods=['GET'])
 # def get_player_present():
