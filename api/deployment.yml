@@ -28,10 +28,10 @@ spec:
     spec:
       containers:
       - name: ping-pong-api
-        image: gcr.io/verdant-future-257013/ping-pong-api:latest
+        image: gcr.io/precise-space-265115/ping-pong-api:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
         env:
           - name: redirect_url
-            value: "http://146.148.75.164/"
+            value: "http://35.223.162.100/"

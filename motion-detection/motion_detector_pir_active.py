@@ -31,8 +31,8 @@ while True:
         try:
             r = requests.post(f"{server_address}/api/pir_reading", json={"value": 100})
             print(f"Motion event #{motion_event} sent, status: {r.status_code}")
-        except requests.exceptions.RequestExeception as e:
-            print(e)
+        except:
+            print("error")
         time.sleep(1)
     else:
         notify_inactivity_counter += 1
@@ -44,7 +44,7 @@ while True:
                 r = requests.post(f"{server_address}/api/pir_reading", json={"value": 0})
                 print(f"No motion sent, status: {r.status_code}")
                 notify_inactivity_counter = 0
-            except requests.exceptions.RequestExeception as e:
+            except requests.RequestExeception as e:
                 print(e)
 
         if notify_inactivity_counter >= initial_notify_inactivity_freq and previously_in_motion:
@@ -52,6 +52,6 @@ while True:
                 r = requests.post(f"{server_address}/api/pir_reading", json={"value": 0})
                 print(f"First submission of no motion sent, status: {r.status_code}")
                 previously_in_motion = False
-            except requests.exceptions.RequestExeception as e:
+            except requests.RequestExeception as e:
                 print(e)
         time.sleep(1)

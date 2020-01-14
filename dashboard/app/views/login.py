@@ -4,7 +4,14 @@ import flask_login
 from flask import (Blueprint, Flask, jsonify, redirect, render_template, request, send_file, session, url_for)
 from utils.activity import (add_login_activity, add_user_activity, get_user_activity, load_json_file)
 
-users = {'admin': {'password': '69bc0cc4b50ac0342dfcecdde7091587'}, 'user': {'password': '9e8acc5d49877acdb8837b032b7b9010'}}
+users = {
+    'admin': {'password': '69bc0cc4b50ac0342dfcecdde7091587'}, 
+    'user': {'password': 'd2695f450e0ccdbc7bdb69e7a6465e6d'},
+    'bcristal': {'password': '6d3dfb728e246457f7177c705a627f73'},
+    'jjennings': {'password': 'dbc3a2b710b128c8d943bc530819f8c9'},
+    'bteunissen': {'password': 'e6da488a2ee461cd3067f70ad81868ac'}
+    }
+
 
 
 login_view = Blueprint('login_view', __name__)

@@ -12,7 +12,7 @@ def notify_slack(msg):
         'channel': '#test-alerts',
         'icon_emoji': 'ping-pong',
         'username': 'Ping Pong Dashboard v0.1.2',
-        'text': f"{msg} (<http://34.69.249.145/index|Link>)"
+        'text': f"{msg} (<http://146.148.75.164/index|Link>)"
     }
     send_slack_message(slack_data)
 

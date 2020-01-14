@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: ping-pong-dashboard
-        image: gcr.io/verdant-future-257013/ping-pong-dashboard:latest
+        image: gcr.io/precise-space-265115/ping-pong-dashboard:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
@@ -36,4 +36,7 @@ spec:
           - name: is_maintenance_mode
             value: "False"
           - name: slack_webhook
-            value: "https://hooks.slack.com/services/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"
+            valueFrom:
+              secretKeyRef:
+                name: slack-webhook
+                key: webhook-token

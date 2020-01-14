@@ -22,11 +22,14 @@ if "nt" not in os.name:
 
 def get_player_present():
     if "nt" not in os.name:
-        result = client.query('SELECT moving_average("signature", 30) FROM "pir_sensor_reading" WHERE ("host" = \'server01\') AND time >= now() - 5m')
-        point = list(result.get_points(measurement='pir_sensor_reading')).pop()
-        if point['moving_average'] >= 50:
-            return True
-        return False
+        try:
+            result = client.query('SELECT moving_average("signature", 30) FROM "pir_sensor_reading" WHERE ("host" = \'server01\') AND time >= now() - 5m')
+            point = list(result.get_points(measurement='pir_sensor_reading')).pop()
+            if point['moving_average'] >= 50:
+                return True
+            return False
+        except:
+            return False
     else:
         return random.choice([True, False])
 
