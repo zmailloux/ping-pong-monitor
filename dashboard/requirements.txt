@@ -1,4 +1,4 @@
-flask==1.0.2
+flask==2.3.2
 Flask-Login==0.4.1
 Flask-Navigation==0.2.0
 prometheus_flask_exporter
